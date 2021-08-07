@@ -1,0 +1,172 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red255\green255\blue255;\red0\green0\blue0;\red56\green185\blue199;
+}
+{\*\expandedcolortbl;;\csgray\c100000;\csgray\c0;\cssrgb\c25544\c77008\c82022;
+}
+\margl1440\margr1440\vieww24780\viewh15500\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs28 \cf2 \cb3 \CocoaLigature0   GNU nano 2.9.3                             metricbeat-config.yml                                       \cf3 \cb1 \
+\
+\cf4 ###################### Metricbeat Configuration Example #######################\cf3 \
+\
+\cf4 # This file is an example configuration file highlighting only the most common\cf3 \
+\cf4 # options. The metricbeat.reference.yml file from the same directory contains all the\cf3 \
+\cf4 # supported options with more comments. You can use it as a reference.\cf3 \
+\cf4 #\cf3 \
+\cf4 # You can find the full configuration reference here:\cf3 \
+\cf4 # https://www.elastic.co/guide/en/beats/metricbeat/index.html\cf3 \
+\
+\cf4 #==========================  Modules configuration ============================\cf3 \
+\
+metricbeat.config.modules:\
+\cf4   # Glob pattern for configuration loading\cf3 \
+  path: $\{path.config\}/modules.d/*.yml\
+\
+\cf4   # Set to true to enable config reloading\cf3 \
+  reload.enabled: false\
+\
+\cf4   # Period on which files under path should be checked for changes\cf3 \
+\cf4   #reload.period: 10s\cf3 \
+\
+\cf4 #==================== Elasticsearch template setting ==========================\cf3 \
+\
+setup.template.settings:\
+  index.number_of_shards: 1\
+  index.codec: best_compression\
+\cf4   #_source.enabled: false\cf3 \
+\
+\cf4 #================================ General =====================================\cf3 \
+\
+\cf4 # The name of the shipper that publishes the network data. It can be used to group\cf3 \
+\cf4 # all the transactions sent by a single shipper in the web interface.\cf3 \
+\cf4 #name:\cf3 \
+\
+\cf4 # The tags of the shipper are included in their own field with each\cf3 \
+\cf4 # transaction published.\cf3 \
+\cf4 #tags: ["service-X", "web-tier"]\cf3 \
+\
+\cf4 # Optional fields that you can specify to add additional information to the\cf3 \
+\cf4 # output.\cf3 \
+\cf4 #fields:\cf3 \
+\cf4 #  env: staging\cf3 \
+\
+\
+\cf4 #============================== Dashboards =====================================\cf3 \
+\cf4 # These settings control loading the sample dashboards to the Kibana index. Loading\cf3 \
+\cf4 # the dashboards is disabled by default and can be enabled either by setting the\cf3 \
+\cf4 # options here or by using the `setup` command.\cf3 \
+\cf4 #setup.dashboards.enabled: false\cf3 \
+\
+\cf4 # The URL from where to download the dashboards archive. By default this URL\cf3 \
+\cf4 # has a value which is computed based on the Beat name and version. For released\cf3 \
+\cf4 # versions, this URL points to the dashboard archive on the artifacts.elastic.co\cf3 \
+\cf4 # website.\cf3 \
+\cf4 #setup.dashboards.url:\cf3 \
+\
+\cf4 #============================== Kibana =====================================\cf3 \
+\
+\cf4 # Starting with Beats version 6.0.0, the dashboards are loaded via the Kibana API.\cf3 \
+\cf4 # This requires a Kibana endpoint configuration.\cf3 \
+setup.kibana:\
+  host: "10.1.0.4:5601"\
+\
+\cf4   # Kibana Host\cf3 \
+\cf4   # Scheme and port can be left out and will be set to the default (http and 5601)\cf3 \
+\cf4   # In case you specify and additional path, the scheme is required: http://localhost:5601/path\cf3 \
+\cf4   # IPv6 addresses should always be defined as: https://[2001:db8::1]:5601\cf3 \
+\cf4   #host: "localhost:5601"\cf3 \
+\
+\cf4   # Kibana Space ID\cf3 \
+\cf4   # ID of the Kibana Space into which the dashboards should be loaded. By default,\cf3 \
+\cf4   # the Default Space will be used.\cf3 \
+\cf4   #space.id:\cf3 \
+\
+\cf4 #============================= Elastic Cloud ==================================\cf3 \
+\
+\cf4 # These settings simplify using Metricbeat with the Elastic Cloud (https://cloud.elastic.co/).\cf3 \
+\
+\cf4 # The cloud.id setting overwrites the `output.elasticsearch.hosts` and\cf3 \
+\cf4 # `setup.kibana.host` options.\cf3 \
+\cf4 # You can find the `cloud.id` in the Elastic Cloud web UI.\cf3 \
+\cf4 #cloud.id:\cf3 \
+\
+\cf4 # The cloud.auth setting overwrites the `output.elasticsearch.username` and\cf3 \
+\cf4 # `output.elasticsearch.password` settings. The format is `<user>:<pass>`.\cf3 \
+\cf4 #cloud.auth:\cf3 \
+\
+\cf4 #================================ Outputs =====================================\cf3 \
+\
+\cf4 # Configure what output to use when sending the data collected by the beat.\cf3 \
+\
+\cf4 #-------------------------- Elasticsearch output ------------------------------\cf3 \
+output.elasticsearch:\
+\cf4   # TODO: Change the hosts IP address to the IP address of your ELK server\cf3 \
+\cf4   # TODO: Change password from `changem` to the password you created\cf3 \
+  hosts: ["10.1.0.4:9200"]\
+  username: "elastic"\
+  password: "changeme"\
+\
+\cf4 #----------------------------- Logstash output --------------------------------\cf3 \
+\cf4 #output.logstash:\cf3 \
+\cf4   # The Logstash hosts\cf3 \
+\cf4   #hosts: ["localhost:5044"]\cf3 \
+\
+\cf4   # Optional SSL. By default is off.\cf3 \
+\cf4   # List of root certificates for HTTPS server verifications\cf3 \
+\cf4   #ssl.certificate_authorities: ["/etc/pki/root/ca.pem"]\cf3 \
+\
+\cf4   # Certificate for SSL client authentication\cf3 \
+\cf4   #ssl.certificate: "/etc/pki/client/cert.pem"\cf3 \
+\
+\cf4   # Client Certificate Key\cf3 \
+\cf4   #ssl.key: "/etc/pki/client/cert.key"\cf3 \
+\
+\cf4 #================================ Processors =====================================\cf3 \
+\
+\cf4 # Configure processors to enhance or manipulate events generated by the beat.\cf3 \
+\
+processors:\
+  - add_host_metadata: ~\
+  - add_cloud_metadata: ~\
+\
+\cf4 #================================ Logging =====================================\cf3 \
+\
+\cf4 # Sets log level. The default log level is info.\cf3 \
+\cf4 # Available log levels are: error, warning, info, debug\cf3 \
+\cf4 #logging.level: debug\cf3 \
+\
+\cf4 # At debug level, you can selectively enable logging only for some components.\cf3 \
+\cf4 # To enable all selectors use ["*"]. Examples of other selectors are "beat",\cf3 \
+\cf4 # "publish", "service".\cf3 \
+\cf4 #logging.selectors: ["*"]\cf3 \
+\
+\cf4 #============================== X-Pack Monitoring ===============================\cf3 \
+\cf4 # metricbeat can export internal metrics to a central Elasticsearch monitoring\cf3 \
+\cf4 # cluster.  This requires xpack monitoring to be enabled in Elasticsearch.  The\cf3 \
+\cf4 # reporting is disabled by default.\cf3 \
+\
+\cf4 # Set to true to enable the monitoring reporter.\cf3 \
+\cf4 #monitoring.enabled: false\cf3 \
+\
+\cf4 # Sets the UUID of the Elasticsearch cluster under which monitoring data for this\cf3 \
+\cf4 # Metricbeat instance will appear in the Stack Monitoring UI. If output.elasticsearch\cf3 \
+\cf4 # is enabled, the UUID is derived from the Elasticsearch cluster referenced by output.elasticsearch.\cf3 \
+\cf4 #monitoring.cluster_uuid:\cf3 \
+\
+\cf4 # Uncomment to send the metrics to Elasticsearch. Most settings from the\cf3 \
+\cf4 # Elasticsearch output are accepted here as well.\cf3 \
+\cf4 # Note that the settings should point to your Elasticsearch *monitoring* cluster.\cf3 \
+\cf4 # Any setting that is not set is automatically inherited from the Elasticsearch\cf3 \
+\cf4 # output configuration, so if you have the Elasticsearch output configured such\cf3 \
+\cf4 # that it is pointing to your Elasticsearch monitoring cluster, you can simply\cf3 \
+\cf4 # uncomment the following line.\cf3 \
+\cf4 #monitoring.elasticsearch:\cf3 \
+\
+\cf4 #================================= Migration ==================================\cf3 \
+\
+\cf4 # This allows to enable 6.7 migration aliases\cf3 \
+\cf4 #migration.6_to_7.enabled: true\cf3 \
+\
+}

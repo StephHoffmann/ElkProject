@@ -1,0 +1,505 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;\red56\green185\blue199;
+}
+{\*\expandedcolortbl;;\csgray\c0;\csgray\c100000;\cssrgb\c25544\c77008\c82022;
+}
+\margl1440\margr1440\vieww19580\viewh15500\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs28 \cf2 \CocoaLigature0 \
+\cf3 \cb2   GNU nano 2.9.3                                  ansible.cfg                                            \cf2 \cb1 \
+\
+\cf4 # config file for ansible -- https://ansible.com/\cf2 \
+\cf4 # ===============================================\cf2 \
+\
+\cf4 # nearly all parameters can be overridden in ansible-playbook\cf2 \
+\cf4 # or with command line flags. ansible will read ANSIBLE_CONFIG,\cf2 \
+\cf4 # ansible.cfg in the current working directory, .ansible.cfg in\cf2 \
+\cf4 # the home directory or /etc/ansible/ansible.cfg, whichever it\cf2 \
+\cf4 # finds first\cf2 \
+\
+[defaults]\
+\
+\cf4 # some basic default values...\cf2 \
+\
+\cf4 #inventory      = /etc/ansible/hosts\cf2 \
+\cf4 #library        = /usr/share/my_modules/\cf2 \
+\cf4 #module_utils   = /usr/share/my_module_utils/\cf2 \
+\cf4 #remote_tmp     = ~/.ansible/tmp\cf2 \
+\cf4 #local_tmp      = ~/.ansible/tmp\cf2 \
+\cf4 #plugin_filters_cfg = /etc/ansible/plugin_filters.yml\cf2 \
+\cf4 #forks          = 5\cf2 \
+\cf4 #poll_interval  = 15\cf2 \
+\cf4 #sudo_user      = root\cf2 \
+\cf4 #ask_sudo_pass = True\cf2 \
+\cf4 #ask_pass      = True\cf2 \
+\cf4 #transport      = smart\cf2 \
+\cf4 #remote_port    = 22\cf2 \
+\cf4 #module_lang    = C\cf2 \
+\cf4 #module_set_locale = False\cf2 \
+\
+\cf4 # plays will gather facts by default, which contain information about\cf2 \
+\cf4 # the remote system.\cf2 \
+\cf4 #\cf2 \
+\cf4 # smart - gather by default, but don't regather if already gathered\cf2 \
+\cf4 # implicit - gather by default, turn off with gather_facts: False\cf2 \
+\cf4 # explicit - do not gather by default, must say gather_facts: True\cf2 \
+\cf4 #gathering = implicit\cf2 \
+\
+\cf4 # This only affects the gathering done by a play's gather_facts directive,\cf2 \
+\cf4 # by default gathering retrieves all facts subsets\cf2 \
+\cf4 # all - gather all subsets\cf2 \
+\cf4 # network - gather min and network facts\cf2 \
+\cf4 # hardware - gather hardware facts (longest facts to retrieve)\cf2 \
+\cf4 # virtual - gather min and virtual facts\cf2 \
+\cf4 # facter - import facts from facter\cf2 \
+\cf4 # ohai - import facts from ohai\cf2 \
+\cf4 # You can combine them using comma (ex: network,virtual)\cf2 \
+\cf4 # You can negate them using ! (ex: !hardware,!facter,!ohai)\cf2 \
+\cf4 # A minimal set of facts is always gathered.\cf2 \
+\cf4 #gather_subset = all\cf2 \
+\
+\cf4 # some hardware related facts are collected\cf2 \
+\cf4 # with a maximum timeout of 10 seconds. This\cf2 \
+\cf4 # option lets you increase or decrease that\cf2 \
+\cf4 # timeout to something more suitable for the\cf2 \
+\cf4 # environment.\cf2 \
+\cf4 # gather_timeout = 10\cf2 \
+\
+\cf4 # Ansible facts are available inside the ansible_facts.* dictionary\cf2 \
+\cf4 # namespace. This setting maintains the behaviour which was the default prior\cf2 \
+\cf4 # to 2.5, duplicating these variables into the main namespace, each with a\cf2 \
+\cf4 # prefix of 'ansible_'.\cf2 \
+\cf4 # This variable is set to True by default for backwards compatibility. It\cf2 \
+\cf4 # will be changed to a default of 'False' in a future release.\cf2 \
+\cf4 # ansible_facts.\cf2 \
+\cf4 # inject_facts_as_vars = True\cf2 \
+\
+\cf4 # additional paths to search for roles in, colon separated\cf2 \
+\cf4 #roles_path    = /etc/ansible/roles\cf2 \
+\
+\cf4 # uncomment this to disable SSH key host checking\cf2 \
+\cf4 #host_key_checking = False\cf2 \
+\
+\cf4 # change the default callback, you can only have one 'stdout' type  enabled at a time.\cf2 \
+\cf4 #stdout_callback = skippy\cf2 \
+\
+\
+\cf4 ## Ansible ships with some plugins that require whitelisting,\cf2 \
+\cf4 ## this is done to avoid running all of a type by default.\
+## These setting lists those that you want enabled for your system.\cf2 \
+\cf4 ## Custom plugins should not need this unless plugin author specifies it.\cf2 \
+\
+\cf4 # enable callback plugins, they can output to stdout but cannot be 'stdout' type.\cf2 \
+\cf4 #callback_whitelist = timer, mail\cf2 \
+\
+\cf4 # Determine whether includes in tasks and handlers are "static" by\cf2 \
+\cf4 # default. As of 2.0, includes are dynamic by default. Setting these\cf2 \
+\cf4 # values to True will make includes behave more like they did in the\cf2 \
+\cf4 # 1.x versions.\cf2 \
+\cf4 #task_includes_static = False\cf2 \
+\cf4 #handler_includes_static = False\cf2 \
+\
+\cf4 # Controls if a missing handler for a notification event is an error or a warning\cf2 \
+\cf4 #error_on_missing_handler = True\cf2 \
+\
+\cf4 # change this for alternative sudo implementations\cf2 \
+\cf4 #sudo_exe = sudo\cf2 \
+\
+\cf4 # What flags to pass to sudo\cf2 \
+\cf4 # WARNING: leaving out the defaults might create unexpected behaviours\cf2 \
+\cf4 #sudo_flags = -H -S -n\cf2 \
+\
+\cf4 # SSH timeout\cf2 \
+\cf4 #timeout = 10\cf2 \
+\
+\cf4 # default user to use for playbooks if user is not specified\cf2 \
+\cf4 # (/usr/bin/ansible will use current user as default)\cf2 \
+remote_user = sysadmin\
+\
+\cf4 # logging is off by default unless this path is defined\cf2 \
+\cf4 # if so defined, consider logrotate\cf2 \
+\cf4 #log_path = /var/log/ansible.log\cf2 \
+\
+\cf4 # default module name for /usr/bin/ansible\cf2 \
+\cf4 #module_name = command\cf2 \
+\
+\cf4 # use this shell for commands executed under sudo\cf2 \
+\cf4 # you may need to change this to bin/bash in rare instances\cf2 \
+\cf4 # if sudo is constrained\cf2 \
+\cf4 #executable = /bin/sh\cf2 \
+\
+\cf4 # if inventory variables overlap, does the higher precedence one win\cf2 \
+\cf4 # or are hash values merged together?  The default is 'replace' but\cf2 \
+\cf4 # this can also be set to 'merge'.\cf2 \
+\cf4 #hash_behaviour = replace\cf2 \
+\
+\cf4 # by default, variables from roles will be visible in the global variable\cf2 \
+\cf4 # scope. To prevent this, the following option can be enabled, and only\cf2 \
+\cf4 # tasks and handlers within the role will see the variables there\cf2 \
+\cf4 #private_role_vars = yes\cf2 \
+\
+\cf4 # list any Jinja2 extensions to enable here:\cf2 \
+\cf4 #jinja2_extensions = jinja2.ext.do,jinja2.ext.i18n\cf2 \
+\
+\cf4 # if set, always use this private key file for authentication, same as\cf2 \
+\cf4 # if passing --private-key to ansible or ansible-playbook\cf2 \
+\cf4 #private_key_file = /path/to/file\cf2 \
+\
+\cf4 # If set, configures the path to the Vault password file as an alternative to\cf2 \
+\cf4 # specifying --vault-password-file on the command line.\cf2 \
+\cf4 #vault_password_file = /path/to/vault_password_file\cf2 \
+\
+\cf4 # format of string \{\{ ansible_managed \}\} available within Jinja2\cf2 \
+\cf4 # templates indicates to users editing templates files will be replaced.\cf2 \
+\cf4 # replacing \{file\}, \{host\} and \{uid\} and strftime codes with proper values.\cf2 \
+\cf4 #ansible_managed = Ansible managed: \{file\} modified on %Y-%m-%d %H:%M:%S by \{uid\} on \{host\}\cf2 \
+\cf4 # \{file\}, \{host\}, \{uid\}, and the timestamp can all interfere with idempotence\cf2 \
+\cf4 # in some situations so the default is a static string:\cf2 \
+\cf4 #ansible_managed = Ansible managed\cf2 \
+\
+\cf4 # by default, ansible-playbook will display "Skipping [host]" if it determines a task\cf2 \
+\cf4 # should not be run on a host.  Set this to "False" if you don't want to see these "Skipping"\cf2 \
+\cf4 # messages. NOTE: the task header will still be shown regardless of whether or not the\cf2 \
+\cf4 # task is skipped.\cf2 \
+\cf4 #display_skipped_hosts = True\cf2 \
+\
+\cf4 # by default, if a task in a playbook does not include a name: field then\cf2 \
+\cf4 # ansible-playbook will construct a header that includes the task's action but\cf2 \
+\cf4 # not the task's args.  This is a security feature because ansible cannot know\cf2 \
+\cf4 # if the *module* considers an argument to be no_log at the time that the\cf2 \
+\cf4 # header is printed.  If your environment doesn't have a problem securing\cf2 \
+\cf4 # stdout from ansible-playbook (or you have manually specified no_log in your\cf2 \
+\cf4 # playbook on all of the tasks where you have secret information) then you can\cf2 \
+\cf4 # safely set this to True to get more informative messages.\cf2 \
+\cf4 #display_args_to_stdout = False\cf2 \
+\
+\cf4 # by default (as of 1.3), Ansible will raise errors when attempting to dereference\cf2 \
+\cf4 # Jinja2 variables that are not set in templates or action lines. Uncomment this line\cf2 \
+\cf4 # to revert the behavior to pre-1.3.\cf2 \
+\cf4 #error_on_undefined_vars = False\cf2 \
+\
+\cf4 # by default (as of 1.6), Ansible may display warnings based on the configuration of the\cf2 \
+\cf4 # system running ansible itself. This may include warnings about 3rd party packages or\cf2 \
+\cf4 # other conditions that should be resolved if possible.\cf2 \
+\cf4 # to disable these warnings, set the following value to False:\cf2 \
+\cf4 #system_warnings = True\cf2 \
+\
+\cf4 # by default (as of 1.4), Ansible may display deprecation warnings for language\cf2 \
+\cf4 # features that should no longer be used and will be removed in future versions.\cf2 \
+\cf4 # to disable these warnings, set the following value to False:\cf2 \
+\cf4 #deprecation_warnings = True\cf2 \
+\cf4 \
+# (as of 1.8), Ansible can optionally warn when usage of the shell and\cf2 \
+\cf4 # command module appear to be simplified by using a default Ansible module\cf2 \
+\cf4 # instead.  These warnings can be silenced by adjusting the following\cf2 \
+\cf4 # setting or adding warn=yes or warn=no to the end of the command line\cf2 \
+\cf4 # parameter string.  This will for example suggest using the git module\cf2 \
+\cf4 # instead of shelling out to the git command.\cf2 \
+\cf4 # command_warnings = False\cf2 \
+\
+\
+\cf4 # set plugin path directories here, separate with colons\cf2 \
+\cf4 #action_plugins     = /usr/share/ansible/plugins/action\cf2 \
+\cf4 #become_plugins     = /usr/share/ansible/plugins/become\cf2 \
+\cf4 #cache_plugins      = /usr/share/ansible/plugins/cache\cf2 \
+\cf4 #callback_plugins   = /usr/share/ansible/plugins/callback\cf2 \
+\cf4 #connection_plugins = /usr/share/ansible/plugins/connection\cf2 \
+\cf4 #lookup_plugins     = /usr/share/ansible/plugins/lookup\cf2 \
+\cf4 #inventory_plugins  = /usr/share/ansible/plugins/inventory\cf2 \
+\cf4 #vars_plugins       = /usr/share/ansible/plugins/vars\cf2 \
+\cf4 #filter_plugins     = /usr/share/ansible/plugins/filter\cf2 \
+\cf4 #test_plugins       = /usr/share/ansible/plugins/test\cf2 \
+\cf4 #terminal_plugins   = /usr/share/ansible/plugins/terminal\cf2 \
+\cf4 #strategy_plugins   = /usr/share/ansible/plugins/strategy\cf2 \
+\
+\
+\cf4 # by default, ansible will use the 'linear' strategy but you may want to try\cf2 \
+\cf4 # another one\cf2 \
+\cf4 #strategy = free\cf2 \
+\
+\cf4 # by default callbacks are not loaded for /bin/ansible, enable this if you\cf2 \
+\cf4 # want, for example, a notification or logging callback to also apply to\cf2 \
+\cf4 # /bin/ansible runs\cf2 \
+\cf4 #bin_ansible_callbacks = False\cf2 \
+\
+\
+\cf4 # don't like cows?  that's unfortunate.\cf2 \
+\cf4 # set to 1 if you don't want cowsay support or export ANSIBLE_NOCOWS=1\cf2 \
+\cf4 #nocows = 1\cf2 \
+\
+\cf4 # set which cowsay stencil you'd like to use by default. When set to 'random',\cf2 \
+\cf4 # a random stencil will be selected for each task. The selection will be filtered\cf2 \
+\cf4 # against the `cow_whitelist` option below.\cf2 \
+\cf4 #cow_selection = default\cf2 \
+\cf4 #cow_selection = random\cf2 \
+\
+\cf4 # when using the 'random' option for cowsay, stencils will be restricted to this list.\cf2 \
+\cf4 # it should be formatted as a comma-separated list with no spaces between names.\cf2 \
+\cf4 # NOTE: line continuations here are for formatting purposes only, as the INI parser\cf2 \
+\cf4 #       in python does not support them.\cf2 \
+\cf4 #cow_whitelist=bud-frogs,bunny,cheese,daemon,default,dragon,elephant-in-snake,elephant,eyes,\\\cf2 \
+\cf4 #\cf2               \cf4 hellokitty,kitty,luke-koala,meow,milk,moofasa,moose,ren,sheep,small,stegosaurus,\\\cf2 \
+\cf4 #\cf2               \cf4 stimpy,supermilker,three-eyes,turkey,turtle,tux,udder,vader-koala,vader,www\cf2 \
+\cf4 \
+\
+# don't like colors either?\cf2 \
+\cf4 # set to 1 if you don't want colors, or export ANSIBLE_NOCOLOR=1\cf2 \
+\cf4 #nocolor = 1\cf2 \
+\
+\cf4 # if set to a persistent type (not 'memory', for example 'redis') fact values\cf2 \
+\cf4 # from previous runs in Ansible will be stored.  This may be useful when\cf2 \
+\cf4 # wanting to use, for example, IP information from one group of servers\cf2 \
+\cf4 # without having to talk to them in the same playbook run to get their\cf2 \
+\cf4 # current IP information.\cf2 \
+\cf4 #fact_caching = memory\cf2 \
+\
+\cf4 #This option tells Ansible where to cache facts. The value is plugin dependent.\cf2 \
+\cf4 #For the jsonfile plugin, it should be a path to a local directory.\cf2 \
+\cf4 #For the redis plugin, the value is a host:port:database triplet: fact_caching_connection = localhost:63\cf2 $\
+\
+\cf4 #fact_caching_connection=/tmp\cf2 \
+\
+\
+\
+\cf4 # retry files\cf2 \
+\cf4 # When a playbook fails a .retry file can be created that will be placed in ~/\cf2 \
+\cf4 # You can enable this feature by setting retry_files_enabled to True\cf2 \
+\cf4 # and you can change the location of the files by setting retry_files_save_path\cf2 \
+\
+\cf4 #retry_files_enabled = False\cf2 \
+\cf4 #retry_files_save_path = ~/.ansible-retry\cf2 \
+\
+\cf4 # squash actions\cf2 \
+\cf4 # Ansible can optimise actions that call modules with list parameters\cf2 \
+\cf4 # when looping. Instead of calling the module once per with_ item, the\cf2 \
+\cf4 # module is called once with all items at once. Currently this only works\cf2 \
+\cf4 # under limited circumstances, and only with parameters named 'name'.\cf2 \
+\cf4 #squash_actions = apk,apt,dnf,homebrew,pacman,pkgng,yum,zypper\cf2 \
+\
+\cf4 # prevents logging of task data, off by default\cf2 \
+\cf4 #no_log = False\cf2 \
+\
+\cf4 # prevents logging of tasks, but only on the targets, data is still logged on the master/controller\cf2 \
+\cf4 #no_target_syslog = False\cf2 \
+\
+\cf4 # controls whether Ansible will raise an error or warning if a task has no\cf2 \
+\cf4 # choice but to create world readable temporary files to execute a module on\cf2 \
+\cf4 # the remote machine.  This option is False by default for security.  Users may\cf2 \
+\cf4 # turn this on to have behaviour more like Ansible prior to 2.1.x.  See\cf2 \
+\cf4 # https://docs.ansible.com/ansible/become.html#becoming-an-unprivileged-user\cf2 \
+\cf4 # for more secure ways to fix this than enabling this option.\cf2 \
+\cf4 #allow_world_readable_tmpfiles = False\cf2 \
+\cf4 \
+# controls the compression level of variables sent to\cf2 \
+\cf4 # worker processes. At the default of 0, no compression\cf2 \
+\cf4 # is used. This value must be an integer from 0 to 9.\cf2 \
+\cf4 #var_compression_level = 9\cf2 \
+\
+\cf4 # controls what compression method is used for new-style ansible modules when\cf2 \
+\cf4 # they are sent to the remote system.  The compression types depend on having\cf2 \
+\cf4 # support compiled into both the controller's python and the client's python.\cf2 \
+\cf4 # The names should match with the python Zipfile compression types:\cf2 \
+\cf4 # * ZIP_STORED (no compression. available everywhere)\cf2 \
+\cf4 # * ZIP_DEFLATED (uses zlib, the default)\cf2 \
+\cf4 # These values may be set per host via the ansible_module_compression inventory\cf2 \
+\cf4 # variable\cf2 \
+\cf4 #module_compression = 'ZIP_DEFLATED'\cf2 \
+\
+\cf4 # This controls the cutoff point (in bytes) on --diff for files\cf2 \
+\cf4 # set to 0 for unlimited (RAM may suffer!).\cf2 \
+\cf4 #max_diff_size = 1048576\cf2 \
+\
+\cf4 # This controls how ansible handles multiple --tags and --skip-tags arguments\cf2 \
+\cf4 # on the CLI.  If this is True then multiple arguments are merged together.  If\cf2 \
+\cf4 # it is False, then the last specified argument is used and the others are ignored.\cf2 \
+\cf4 # This option will be removed in 2.8.\cf2 \
+\cf4 #merge_multiple_cli_flags = True\cf2 \
+\
+\cf4 # Controls showing custom stats at the end, off by default\cf2 \
+\cf4 #show_custom_stats = True\cf2 \
+\
+\cf4 # Controls which files to ignore when using a directory as inventory with\cf2 \
+\cf4 # possibly multiple sources (both static and dynamic)\cf2 \
+\cf4 #inventory_ignore_extensions = ~, .orig, .bak, .ini, .cfg, .retry, .pyc, .pyo\cf2 \
+\
+\cf4 # This family of modules use an alternative execution path optimized for network appliances\cf2 \
+\cf4 # only update this setting if you know how this works, otherwise it can break module execution\cf2 \
+\cf4 #network_group_modules=eos, nxos, ios, iosxr, junos, vyos\cf2 \
+\
+\cf4 # When enabled, this option allows lookups (via variables like \{\{lookup('foo')\}\} or when used as\cf2 \
+\cf4 # a loop with `with_foo`) to return data that is not marked "unsafe". This means the data may contain\cf2 \
+\cf4 # jinja2 templating language which will be run through the templating engine.\cf2 \
+\cf4 # ENABLING THIS COULD BE A SECURITY RISK\cf2 \
+\cf4 #allow_unsafe_lookups = False\cf2 \
+\
+\cf4 # set default errors for all plays\cf2 \
+\cf4 #any_errors_fatal = False\cf2 \
+\
+[inventory]\
+\cf4 # enable inventory plugins, default: 'host_list', 'script', 'auto', 'yaml', 'ini', 'toml'\cf2 \
+\cf4 #enable_plugins = host_list, virtualbox, yaml, constructed\cf2 \
+\
+\cf4 # ignore these extensions when parsing a directory as inventory source\cf2 \
+\cf4 #ignore_extensions = .pyc, .pyo, .swp, .bak, ~, .rpm, .md, .txt, ~, .orig, .ini, .cfg, .retry\cf2 \
+\
+\cf4 # ignore files matching these patterns when parsing a directory as inventory source\cf2 \
+\cf4 #ignore_patterns=\cf2 \
+\
+\cf4 # If 'true' unparsed inventory sources become fatal errors, they are warnings otherwise.\cf2 \
+\cf4 #unparsed_is_failed=False\cf2 \
+\
+[privilege_escalation]\
+\cf4 #become=True\cf2 \
+\cf4 #become_method=sudo\cf2 \
+\cf4 #become_user=root\cf2 \
+\cf4 #become_ask_pass=False\cf2 \
+\
+[paramiko_connection]\
+\
+\cf4 # uncomment this line to cause the paramiko connection plugin to not record new host\cf2 \
+\cf4 # keys encountered.  Increases performance on new host additions.  Setting works independently of the\cf2 \
+\cf4 # host key checking setting above.\cf2 \
+\cf4 #record_host_keys=False\cf2 \
+\
+\cf4 # by default, Ansible requests a pseudo-terminal for commands executed under sudo. Uncomment this\cf2 \
+\cf4 # line to disable this behaviour.\cf2 \
+\cf4 #pty=False\cf2 \
+\
+\cf4 # paramiko will default to looking for SSH keys initially when trying to\cf2 \
+\cf4 # authenticate to remote devices.  This is a problem for some network devices\cf2 \
+\cf4 # that close the connection after a key failure.  Uncomment this line to\cf2 \
+\cf4 # disable the Paramiko look for keys function\cf2 \
+\cf4 #look_for_keys = False\cf2 \
+\
+\cf4 # When using persistent connections with Paramiko, the connection runs in a\cf2 \
+\cf4 # background process.  If the host doesn't already have a valid SSH key, by\cf2 \
+\cf4 # default Ansible will prompt to add the host key.  This will cause connections\cf2 \
+\cf4 # running in background processes to fail.  Uncomment this line to have\cf2 \
+\cf4 # Paramiko automatically add host keys.\cf2 \
+\cf4 #host_key_auto_add = True\cf2 \
+\
+[ssh_connection]\
+\
+\cf4 # ssh arguments to use\cf2 \
+\cf4 # Leaving off ControlPersist will result in poor performance, so use\cf2 \
+\cf4 # paramiko on older platforms rather than removing it, -C controls compression use\cf2 \
+\cf4 #ssh_args = -C -o ControlMaster=auto -o ControlPersist=60s\cf2 \
+\
+\cf4 # The base directory for the ControlPath sockets.\cf2 \
+\cf4 # This is the "%(directory)s" in the control_path option\cf2 \
+\cf4 #\cf2 \
+\cf4 # Example:\cf2 \
+\cf4 # control_path_dir = /tmp/.ansible/cp\cf2 \
+\cf4 #control_path_dir = ~/.ansible/cp\cf2 \
+\
+\cf4 # The path to use for the ControlPath sockets. This defaults to a hashed string of the hostname,\cf2 \
+\cf4 # port and username (empty string in the config). The hash mitigates a common problem users\cf2 \
+\cf4 # found with long hostnames and the conventional %(directory)s/ansible-ssh-%%h-%%p-%%r format.\cf2 \
+\cf4 # In those cases, a "too long for Unix domain socket" ssh error would occur.\cf2 \
+\cf4 #\cf2 \
+\cf4 # Example:\cf2 \
+\cf4 # control_path = %(directory)s/%%h-%%r\cf2 \
+\cf4 #control_path =\cf2 \
+\
+\cf4 # Enabling pipelining reduces the number of SSH operations required to\cf2 \
+\cf4 # execute a module on the remote server. This can result in a significant\cf2 \
+\cf4 # performance improvement when enabled, however when using "sudo:" you must\cf2 \
+\cf4 # first disable 'requiretty' in /etc/sudoers\cf2 \
+\cf4 #\cf2 \
+\cf4 # By default, this option is disabled to preserve compatibility with\cf2 \
+\cf4 # sudoers configurations that have requiretty (the default on many distros).\cf2 \
+\cf4 #\cf2 \
+\cf4 #pipelining = False\cf2 \
+\
+\cf4 # Control the mechanism for transferring files (old)\cf2 \
+\cf4 #   * smart = try sftp and then try scp [default]\cf2 \
+\cf4 #   * True = use scp only\cf2 \
+\cf4 #   * False = use sftp only\cf2 \
+\cf4 #scp_if_ssh = smart\cf2 \
+\
+\cf4 # Control the mechanism for transferring files (new)\cf2 \
+\cf4 # If set, this will override the scp_if_ssh option\cf2 \
+\cf4 #   * sftp  = use sftp to transfer files\cf2 \
+\cf4 #   * scp   = use scp to transfer files\cf2 \
+\cf4 #   * piped = use 'dd' over SSH to transfer files\cf2 \
+\cf4 #   * smart = try sftp, scp, and piped, in that order [default]\cf2 \
+\cf4 #transfer_method = smart\cf2 \
+\
+\cf4 # if False, sftp will not use batch mode to transfer files. This may cause some\cf2 \
+\cf4 # types of file transfer failures impossible to catch however, and should\cf2 \
+\cf4 # only be disabled if your sftp version has problems with batch mode\cf2 \
+\cf4 #sftp_batch_mode = False\cf2 \
+\
+\cf4 # The -tt argument is passed to ssh when pipelining is not enabled because sudo \cf2 \
+\cf4 # requires a tty by default. \cf2 \
+\cf4 #usetty = True\cf2 \
+\
+\cf4 # Number of times to retry an SSH connection to a host, in case of UNREACHABLE.\cf2 \
+\cf4 # For each retry attempt, there is an exponential backoff,\cf2 \
+\cf4 # so after the first attempt there is 1s wait, then 2s, 4s etc. up to 30s (max).\cf2 \
+\cf4 #retries = 3\cf2 \
+\
+[persistent_connection]\
+\cf4 \
+# Configures the persistent connection timeout value in seconds.  This value is\cf2 \
+\cf4 # how long the persistent connection will remain idle before it is destroyed.\cf2 \
+\cf4 # If the connection doesn't receive a request before the timeout value\cf2 \
+\cf4 # expires, the connection is shutdown. The default value is 30 seconds.\cf2 \
+\cf4 #connect_timeout = 30\cf2 \
+\
+\cf4 # The command timeout value defines the amount of time to wait for a command\cf2 \
+\cf4 # or RPC call before timing out. The value for the command timeout must\cf2 \
+\cf4 # be less than the value of the persistent connection idle timeout (connect_timeout)\cf2 \
+\cf4 # The default value is 30 second.\
+#command_timeout = 30\cf2 \
+\
+[accelerate]\
+\cf4 #accelerate_port = 5099\cf2 \
+\cf4 #accelerate_timeout = 30\cf2 \
+\cf4 #accelerate_connect_timeout = 5.0\cf2 \
+\
+\cf4 # The daemon timeout is measured in minutes. This time is measured\cf2 \
+\cf4 # from the last activity to the accelerate daemon.\cf2 \
+\cf4 #accelerate_daemon_timeout = 30\cf2 \
+\
+\cf4 # If set to yes, accelerate_multi_key will allow multiple\cf2 \
+\cf4 # private keys to be uploaded to it, though each user must\cf2 \
+\cf4 # have access to the system via SSH to add a new key. The default\cf2 \
+\cf4 # is "no".\cf2 \
+\cf4 #accelerate_multi_key = yes\cf2 \
+\
+[selinux]\
+\cf4 # file systems that require special treatment when dealing with security context\cf2 \
+\cf4 # the default behaviour that copies the existing context or uses the user default\cf2 \
+\cf4 # needs to be changed to use the file system dependent context.\cf2 \
+\cf4 #special_context_filesystems=nfs,vboxsf,fuse,ramfs,9p,vfat\cf2 \
+\
+\cf4 # Set this to yes to allow libvirt_lxc connections to work without SELinux.\cf2 \
+\cf4 #libvirt_lxc_noseclabel = yes\cf2 \
+\
+[colors]\
+\cf4 #highlight = white\cf2 \
+\cf4 #verbose = blue\cf2 \
+\cf4 #warn = bright purple\cf2 \
+\cf4 #error = red\cf2 \
+\cf4 #debug = dark gray\cf2 \
+\cf4 #deprecate = purple\cf2 \
+\cf4 #skip = cyan\cf2 \
+\cf4 #unreachable = red\cf2 \
+\cf4 #ok = green\cf2 \
+\cf4 #changed = yellow\cf2 \
+\cf4 #diff_add = green\cf2 \
+\cf4 #diff_remove = red\cf2 \
+\cf4 #diff_lines = cyan\cf2 \
+\
+\
+[diff]\
+\cf4 # Always print diff when running ( same as always running with -D/--diff )\cf2 \
+\cf4 # always = no\cf2 \
+\
+\cf4 # Set how many context lines to show in diff\cf2 \
+\cf4 # context = 3\cf2 \
+\
+}
